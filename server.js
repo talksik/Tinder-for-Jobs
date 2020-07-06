@@ -8,7 +8,11 @@ app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/js', express.static(__dirname + '/public/js'));
 app.use('/images', express.static(__dirname + '/public/images'));
 
-const port = server.address().port || 8081;
+const port = process.env.PORT || 8081;
 var server = app.listen(port, function () {
-  console.log('Server started at http://localhost:%s', port);
+  var host = server.address();
+  var port = server.address().port;
+
+  //server is successful
+  console.log(`App listening at port: ${port}`);
 });
